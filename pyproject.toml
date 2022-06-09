@@ -13,9 +13,41 @@ SQLAlchemy = "^1.4.37"
 psycopg2-binary = "^2.9.3"
 SQLAlchemy-Utils = "^0.38.2"
 alembic = "^1.8.0"
+asyncpg = "^0.25.0"
 
 [tool.poetry.dev-dependencies]
+flake8 = "^4.0.1"
+black = "^22.3.0"
+pre-commit = "^2.19.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[flake8]
+ignore = ["E203", "E266", "E501", "W503", "F403", "F401"]
+max-line-length = 79
+max-complexity = 18
+select = ["B", "C", "E", "F", "W", "T4", "B9"]
+
+[tool.black]
+line-length = 79
+target-version = ['py37']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  | migrations
+  | alembic
+)/
+'''
